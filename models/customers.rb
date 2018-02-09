@@ -52,4 +52,12 @@ class Customer
     return movies.map{|movie| Film.new(movie)}
   end
 
+  def tickets
+    sql = "SELECT * FROM tickets WHERE customer_id = $1"
+    values = [@id]
+    showings = SqlRunner.run(sql, values)
+    array_of_showings = showings.map{|showing| Ticket.new(showing)}
+    return array_of_showings.length
+  end
+
 end

@@ -52,4 +52,12 @@ class Film
     return viewers.map{|viewer| Customer.new(viewer)}
   end
 
+  def customer_numbers
+    sql = "SELECT * FROM tickets WHERE film_id = $1"
+    values = [@id]
+    viewers = SqlRunner.run(sql, values)
+    array_of_viewers = viewers.map{|viewer| Customer.new(viewer)}
+    return array_of_viewers.length
+  end
+
 end
