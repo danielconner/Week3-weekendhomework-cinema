@@ -33,6 +33,14 @@ class Ticket
     SqlRunner.run(sql, values)
   end
 
+  # def update_budgets()
+  #   sql = "UPDATE customer SET funds = (customer.funds - $1)
+  #         WHERE id = $2"
+  #   values = [@film_id.price, @id]
+  #   SqlRunner.run( sql,values )
+  #
+  # end
+
   def self.all()
     sql = "SELECT * FROM tickets"
     viewers = SqlRunner.run(sql)

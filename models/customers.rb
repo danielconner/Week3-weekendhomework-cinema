@@ -60,4 +60,6 @@ class Customer
     return array_of_showings.length
   end
 
+
+
 end
