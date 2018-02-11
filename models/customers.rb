@@ -60,6 +60,16 @@ class Customer
     return array_of_showings.length
   end
 
+  def ticket_price()
+    sql = "SELECT price FROM films WHERE id = $1;"
+    values = [@id]
+    costs = SqlRunner.run(sql, values)
+    return costs.map{|cost| cost['price'].to_i}
+  end
 
+  def funds_remaining()
+    @funds -= ticket_price.sum
+    update
+  end
 
 end
